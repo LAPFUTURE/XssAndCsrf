@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let HTMLEncode = (str)=>{
+            if(str.length == 0){return "";}
+            let s = "";
+            s = str.replace(/&/g,"&amp;");
+            s = s.replace(/</g,"&lt;");
+            s = s.replace(/>/g,"&gt;");
+            s = s.replace(/\"/g,"&quot;");
+            return s;
+        }
+    </script>
+</head>
+<body>
+    <!-- 自解码机制 -->
+    <input type="button" id="exec_btn" value="exec0" onclick="document.write('<img src=@ onerror=alert(123) />')" />
+
+    <input type="button" id="exec_btn1" value="execA" onclick="document.write(HTMLEncode('<img src=@ onerror=alert(123) />'))"/>
+
+    <input type="button" id="exec_btn2" value="execB" onclick="document.write('&lt;img src=@ onerror=alert(123) /&gt;')"/>
+
+    <input type="button" id="exec_btn3" value="execC" onclick="x='&lt;img src=@ onerror=alert(123) /&gt;';alert(x);document.write(x)"/>
+
+</body>
+</html>
